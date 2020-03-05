@@ -1,5 +1,10 @@
 <?php
 
+require_once("./dbconnect.php");
+
+$stmt=$dbh->prepare()
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
