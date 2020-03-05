@@ -1,8 +1,10 @@
 <?php
 
 require_once("./dbconnect.php");
+require_once("function.php");
 
-$stmt=$dbh->prepare()
+$stmt=$dbh->prepare("SELECT*FROM tasks");
+$stmt->execute();
 
 
 ?>
