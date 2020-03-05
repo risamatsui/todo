@@ -6,6 +6,7 @@ require_once("./function.php");
 $stmt=$dbh->prepare("SELECT*FROM tasks");
 $stmt->execute();
 
+$tasks = $stmt->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ $stmt->execute();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Todoアプリ</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -42,12 +44,15 @@ $stmt->execute();
         </div>
 
         <div class="row p-3">
+        <?php foreach ($tasks as $task)  :?>
             <div class="col-sm-6 col-md-4 col-lg-3 py-3 py-3">
                 <div class="card">
                     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">ここにタイトル</h5>
+                        <h5 class="card-title"><?= h($task["title"]); ?><ここにタイトル</h5>
                         <p class="card-text">
+                        <?= h($task["contents"]); ?>
+                        ); p>
                             ここに詳細
                         </p>
                         <div class="text-right d-flex justify-content-end">
@@ -60,6 +65,7 @@ $stmt->execute();
                     </div>
                 </div>
             </div>
+                    <?php endforeach; ?>
         </div>
     </div>
 
