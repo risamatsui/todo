@@ -1,11 +1,14 @@
 <?php
 
+//ファイルの読み込み
 require_once("./dbconnect.php");
 require_once("./function.php");
 
+//DBからデータを取得
 $stmt=$dbh->prepare("SELECT*FROM tasks");
 $stmt->execute();
 
+//実行結果を変数に代入
 $tasks = $stmt->fetchAll();
 
 ?>
